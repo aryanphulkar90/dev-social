@@ -1,0 +1,16 @@
+{
+  "name": "dev-social",
+  "version": "1.0.0",
+  "description": "Place to find fellow devs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/app.js",
+    "start": "node src/app.js"
+  },
+  "author": "Aryan Phulkar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
