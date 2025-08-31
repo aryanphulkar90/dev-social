@@ -7,7 +7,7 @@ const app = express();
 const cors = require("cors");
 
 const corsOptions = {
-  origin: "http://3.90.14.253/",
+  origin: "http://3.90.14.253",
   credentials: true,
 };
 
