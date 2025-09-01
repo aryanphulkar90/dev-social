@@ -6,8 +6,16 @@ const app = express();
 
 const cors = require("cors");
 
+const whitelist = ["http://98.80.227.209", "http://localhost:5173"];
+
 const corsOptions = {
-  origin: "http://98.80.227.209",
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
 };
 
@@ -28,7 +36,7 @@ app.use("/profile", profileRouter);
 app.use("/request", requestsRouter);
 
 app.use((err,req,res,next)=>{
-  res.status(err.status || 400).json({ error: err.message });
+  return res.status(err.status || 400).json({ error: err.message });
 })
 
 connectDB()

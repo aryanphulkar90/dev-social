@@ -14,8 +14,6 @@ const userAuth = async (req, res, next) => {
       return next(error);
     }
 
-    console.log("oh");
-
     const decodedMessage = jwt.verify(token, "some string");
 
     const { _id } = decodedMessage;
