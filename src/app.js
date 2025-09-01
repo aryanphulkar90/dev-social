@@ -7,7 +7,7 @@ const app = express();
 const cors = require("cors");
 
 const corsOptions = {
-  origin: "http://3.90.14.253",
+  origin: "http://98.80.227.209",
   credentials: true,
 };
 
@@ -26,6 +26,10 @@ const requestsRouter = require("./routes/requests.js");
 app.use("/auth", userAuthRouter);
 app.use("/profile", profileRouter);
 app.use("/request", requestsRouter);
+
+app.use((err,req,res,next)=>{
+  res.status(err.status || 400).json({ error: err.message });
+})
 
 connectDB()
   .then(() => {
